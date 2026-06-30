@@ -1,0 +1,272 @@
+CSV Explorer
+A modern, interactive CSV file viewer with advanced filtering, sorting, and visualization capabilities.
+
+📋 Overview
+CSV Explorer is a single-page application that allows you to upload CSV files and explore their data with an intuitive interface. It offers multiple views, powerful filtering options, column management, and data visualization - all without sending your data to any server.
+
+✨ Features
+File Management
+CSV Upload - Drag and drop or click to upload CSV files
+
+Smart parsing - Handles quoted fields, line breaks, and BOM markers
+
+File information - Displays file size, row count, and column count
+
+Data Exploration
+Multiple Views
+
+List View - Clean row-by-row display with key fields
+
+Card View - Visual cards with tags and expanded fields
+
+Table View - Traditional spreadsheet-style table
+
+Overview - Summary statistics and data breakdowns
+
+Filtering & Sorting
+Smart Filtering - Filter by any column with multi-select options
+
+Global Search - Search across all columns with Ctrl+K shortcut
+
+Column Sorting - Sort by any column in ascending or descending order
+
+Active Filter Pills - Visual indicators showing active filters
+
+One-click Clear - Clear all filters with a single button
+
+Column Management
+Visible Columns - Choose which columns to display
+
+Column Search - Quickly find columns in the sidebar
+
+Primary Column - Automatically detected and highlighted
+
+Column Order - Drag and reorder columns (UI ready)
+
+Data Intelligence
+Auto Type Detection - Identifies Text, Number, URL, Date, and Other fields
+
+Data Summary - Real-time statistics about your data
+
+Visual Breakdowns - Bar charts for categorical data in Overview view
+
+Color Coding - Visual indicators for different data types
+
+User Experience
+Dark/Light Theme - Toggle between themes with persistence
+
+Pagination - Browse large datasets with page controls
+
+Responsive Design - Works on desktop, tablet, and mobile
+
+Keyboard Shortcuts - Ctrl+K for quick search
+
+Persistent State - Theme preference saved in localStorage
+
+🚀 Getting Started
+Prerequisites
+Any modern web browser (Chrome, Firefox, Safari, Edge)
+
+Quick Start
+Download the project files (index.html, style.css, script.js)
+
+Open index.html in your browser
+
+Click "Upload CSV" or use the "Choose CSV" button
+
+Start exploring your data!
+
+Try It Now
+No installation needed - just open the HTML file in your browser. All processing happens client-side.
+
+📖 Usage Guide
+Basic Workflow
+Upload your CSV file
+
+Browse data in your preferred view
+
+Search or filter to find specific entries
+
+Sort columns to organize data
+
+Customize which columns are visible
+
+Switch views for different perspectives
+
+Keyboard Shortcuts
+Ctrl+K - Focus search input
+
+Esc - Close open dropdowns
+
+Tips
+The app automatically detects primary columns (name, title, tool, etc.)
+
+URL columns become clickable links
+
+Numeric fields (difficulty, priority, rating) show as dot scales
+
+Categorical columns appear in filter dropdowns
+
+The Overview view shows data breakdowns for top columns
+
+🎨 UI Components
+Sidebar
+Navigation menu
+
+Theme toggle
+
+Quick upload button
+
+Top Bar
+Current file information
+
+Upload button
+
+View switcher
+
+Toolbar
+Global search with shortcut
+
+Filter dropdown (multi-select)
+
+Sort dropdown
+
+Column visibility
+
+Main Content
+Data grid with multiple view modes
+
+Empty state messages
+
+Pagination controls
+
+Right Panel
+Column management
+
+Data summary
+
+Type distribution visualization
+
+🔧 Technical Details
+Architecture
+Pure JavaScript - No external dependencies
+
+CSS Custom Properties - Easy theming
+
+Local Storage - Theme persistence
+
+Client-side CSV parsing - No data leaves your browser
+
+CSV Parsing
+Handles quoted fields
+
+Supports CRLF and LF line endings
+
+Detects and handles BOM (Byte Order Mark)
+
+Automatically trims whitespace
+
+Data Types Detection
+URL - Based on column name (link, url, website)
+
+Date - Based on column name (date, created, updated)
+
+Number - Based on column name and sample values
+
+Text - Default type
+
+Other - Fallback category
+
+Performance
+Pagination for large datasets
+
+Efficient filtering and sorting
+
+Minimal re-rendering
+
+Lightweight DOM manipulation
+
+🎯 Use Cases
+Data Analysis - Quick CSV inspection and filtering
+
+Product Catalogs - Browse and filter product lists
+
+Project Management - View and sort project data
+
+Contact Lists - Search and filter contact information
+
+Inventory Management - Monitor inventory data
+
+Research Data - Explore dataset structures
+
+Data Cleaning - Preview and verify CSV content
+
+🛠️ Customization
+Theming
+The application supports dark and light themes. The theme preference is automatically saved.
+
+Column Management
+Set your own default visible columns
+
+Reorder columns (drag and drop ready)
+
+Toggle visibility for any column
+
+Branding
+The primary color (purple) can be customized in CSS by modifying:
+
+css
+--accent: #6d5bf6;
+--accent-hover: #7e6ff9;
+--accent-soft: rgba(109, 91, 246, 0.16);
+📱 Responsive Design
+Desktop - Full three-column layout
+
+Tablet - Collapsible right panel
+
+Mobile - Single column, sidebar hidden
+
+🔒 Privacy & Security
+All processing is done locally in your browser
+
+No data is sent to any server
+
+No cookies or tracking
+
+Works offline after first load
+
+📄 License
+This project is open source and available under the MIT License.
+
+🤝 Contributing
+Feel free to submit issues, feature requests, or pull requests. Here are some areas for improvement:
+
+Drag and drop column reordering
+
+Data export (CSV, JSON)
+
+Charts and graphs in Overview
+
+More CSV formatting options
+
+Row selection and bulk actions
+
+🐛 Known Issues
+Large files may cause performance issues (optimized for files under 10MB)
+
+Complex CSV with nested quotes may need adjustments
+
+Column drag-and-drop is UI-ready but functional reordering is planned
+
+📞 Support
+For issues or questions:
+
+Check the browser console for errors
+
+Verify your CSV format is standard
+
+Try with a smaller sample file
+
+Ensure file encoding is UTF-8
+
+CSV Explorer - Making data exploration simple and beautiful. 🚀
