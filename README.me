@@ -1,272 +1,166 @@
-CSV Explorer
-A modern, interactive CSV file viewer with advanced filtering, sorting, and visualization capabilities.
+# CSV Explorer
 
-📋 Overview
-CSV Explorer is a single-page application that allows you to upload CSV files and explore their data with an intuitive interface. It offers multiple views, powerful filtering options, column management, and data visualization - all without sending your data to any server.
+A lightweight, browser-based CSV viewer and analyzer that allows users to upload, explore, search, filter, sort, and inspect CSV files without requiring a backend server or database.
 
-✨ Features
-File Management
-CSV Upload - Drag and drop or click to upload CSV files
+All processing happens locally in the browser, ensuring fast performance and improved data privacy.
 
-Smart parsing - Handles quoted fields, line breaks, and BOM markers
+---
 
-File information - Displays file size, row count, and column count
+## Features
 
-Data Exploration
-Multiple Views
+### 📂 CSV File Upload
 
-List View - Clean row-by-row display with key fields
+* Upload CSV files directly from your device
+* Client-side file processing
+* Display uploaded file information
 
-Card View - Visual cards with tags and expanded fields
+### 🔍 Global Search
 
-Table View - Traditional spreadsheet-style table
+* Search across all rows and columns
+* Real-time filtering while typing
+* Case-insensitive search
 
-Overview - Summary statistics and data breakdowns
+### 🎯 Advanced Filtering
 
-Filtering & Sorting
-Smart Filtering - Filter by any column with multi-select options
+* Create filters for individual columns
+* Multiple filters can be applied simultaneously
+* View active filter count
+* Clear single or all filters instantly
 
-Global Search - Search across all columns with Ctrl+K shortcut
+### ↕️ Sorting
 
-Column Sorting - Sort by any column in ascending or descending order
+* Sort data in ascending or descending order
+* Sort by any available column
+* Visual indication of active sorting state
 
-Active Filter Pills - Visual indicators showing active filters
+### 👁️ Column Management
 
-One-click Clear - Clear all filters with a single button
+* Show or hide columns dynamically
+* Search within column names
+* Reset column visibility settings
 
-Column Management
-Visible Columns - Choose which columns to display
+### 📊 Data Analysis
 
-Column Search - Quickly find columns in the sidebar
+* Display total rows and columns
+* Detect column data types:
 
-Primary Column - Automatically detected and highlighted
+  * Text
+  * Number
+  * Date
+  * URL
+  * Other
 
-Column Order - Drag and reorder columns (UI ready)
+### 🗂️ Data Visualization
 
-Data Intelligence
-Auto Type Detection - Identifies Text, Number, URL, Date, and Other fields
+* Card-based data display
+* Pagination support
+* Adjustable items per page
 
-Data Summary - Real-time statistics about your data
+### 🌙 Theme Support
 
-Visual Breakdowns - Bar charts for categorical data in Overview view
+* Light Mode
+* Dark Mode
+* Persistent theme preference
 
-Color Coding - Visual indicators for different data types
+---
 
-User Experience
-Dark/Light Theme - Toggle between themes with persistence
+## Tech Stack
 
-Pagination - Browse large datasets with page controls
+* HTML5
+* CSS3
+* Vanilla JavaScript (ES6+)
 
-Responsive Design - Works on desktop, tablet, and mobile
+No external libraries or frameworks are required.
 
-Keyboard Shortcuts - Ctrl+K for quick search
+---
 
-Persistent State - Theme preference saved in localStorage
+## Project Structure
 
-🚀 Getting Started
-Prerequisites
-Any modern web browser (Chrome, Firefox, Safari, Edge)
+```text
+CSV-Explorer/
+│
+├── index.html      # Main application interface
+├── style.css       # Styling and themes
+├── script.js       # Application logic and CSV processing
+└── README.md
+```
 
-Quick Start
-Download the project files (index.html, style.css, script.js)
+---
 
-Open index.html in your browser
+## Getting Started
 
-Click "Upload CSV" or use the "Choose CSV" button
+### Option 1: Open Directly
 
-Start exploring your data!
+Simply open `index.html` in your preferred browser.
 
-Try It Now
-No installation needed - just open the HTML file in your browser. All processing happens client-side.
+```bash
+open index.html
+```
 
-📖 Usage Guide
-Basic Workflow
-Upload your CSV file
+Or double-click the file.
 
-Browse data in your preferred view
+### Option 2: Run with Live Server
 
-Search or filter to find specific entries
+Using Visual Studio Code:
 
-Sort columns to organize data
+1. Install the Live Server extension.
+2. Right-click `index.html`.
+3. Select **Open with Live Server**.
 
-Customize which columns are visible
+---
 
-Switch views for different perspectives
+## Usage
 
-Keyboard Shortcuts
-Ctrl+K - Focus search input
+1. Launch the application.
+2. Click **Upload CSV**.
+3. Select a CSV file.
+4. Explore your data using:
 
-Esc - Close open dropdowns
+   * Search
+   * Filters
+   * Sorting
+   * Column Visibility Controls
+   * Pagination
+   * Theme Switcher
 
-Tips
-The app automatically detects primary columns (name, title, tool, etc.)
+---
 
-URL columns become clickable links
+## Advantages
 
-Numeric fields (difficulty, priority, rating) show as dot scales
+* Fully client-side
+* No installation required
+* No server dependency
+* Privacy-friendly
+* Fast and lightweight
+* Clean and responsive UI
 
-Categorical columns appear in filter dropdowns
+---
 
-The Overview view shows data breakdowns for top columns
+## Limitations
 
-🎨 UI Components
-Sidebar
-Navigation menu
+* Very large CSV files may impact browser memory usage.
+* Data is only available during the current session.
+* Editing and exporting modified CSV files are not currently supported.
 
-Theme toggle
+---
 
-Quick upload button
+## Roadmap
 
-Top Bar
-Current file information
+Future improvements may include:
 
-Upload button
+* CSV export after filtering
+* Excel export support
+* Data visualization and charts
+* Drag & Drop file upload
+* User preference persistence
+* Virtual scrolling for large datasets
+* Advanced date and numeric filters
+* Multiple data views
 
-View switcher
+---
 
-Toolbar
-Global search with shortcut
+## License
 
-Filter dropdown (multi-select)
+This project is available for educational and personal use.
 
-Sort dropdown
-
-Column visibility
-
-Main Content
-Data grid with multiple view modes
-
-Empty state messages
-
-Pagination controls
-
-Right Panel
-Column management
-
-Data summary
-
-Type distribution visualization
-
-🔧 Technical Details
-Architecture
-Pure JavaScript - No external dependencies
-
-CSS Custom Properties - Easy theming
-
-Local Storage - Theme persistence
-
-Client-side CSV parsing - No data leaves your browser
-
-CSV Parsing
-Handles quoted fields
-
-Supports CRLF and LF line endings
-
-Detects and handles BOM (Byte Order Mark)
-
-Automatically trims whitespace
-
-Data Types Detection
-URL - Based on column name (link, url, website)
-
-Date - Based on column name (date, created, updated)
-
-Number - Based on column name and sample values
-
-Text - Default type
-
-Other - Fallback category
-
-Performance
-Pagination for large datasets
-
-Efficient filtering and sorting
-
-Minimal re-rendering
-
-Lightweight DOM manipulation
-
-🎯 Use Cases
-Data Analysis - Quick CSV inspection and filtering
-
-Product Catalogs - Browse and filter product lists
-
-Project Management - View and sort project data
-
-Contact Lists - Search and filter contact information
-
-Inventory Management - Monitor inventory data
-
-Research Data - Explore dataset structures
-
-Data Cleaning - Preview and verify CSV content
-
-🛠️ Customization
-Theming
-The application supports dark and light themes. The theme preference is automatically saved.
-
-Column Management
-Set your own default visible columns
-
-Reorder columns (drag and drop ready)
-
-Toggle visibility for any column
-
-Branding
-The primary color (purple) can be customized in CSS by modifying:
-
-css
---accent: #6d5bf6;
---accent-hover: #7e6ff9;
---accent-soft: rgba(109, 91, 246, 0.16);
-📱 Responsive Design
-Desktop - Full three-column layout
-
-Tablet - Collapsible right panel
-
-Mobile - Single column, sidebar hidden
-
-🔒 Privacy & Security
-All processing is done locally in your browser
-
-No data is sent to any server
-
-No cookies or tracking
-
-Works offline after first load
-
-📄 License
-This project is open source and available under the MIT License.
-
-🤝 Contributing
-Feel free to submit issues, feature requests, or pull requests. Here are some areas for improvement:
-
-Drag and drop column reordering
-
-Data export (CSV, JSON)
-
-Charts and graphs in Overview
-
-More CSV formatting options
-
-Row selection and bulk actions
-
-🐛 Known Issues
-Large files may cause performance issues (optimized for files under 10MB)
-
-Complex CSV with nested quotes may need adjustments
-
-Column drag-and-drop is UI-ready but functional reordering is planned
-
-📞 Support
-For issues or questions:
-
-Check the browser console for errors
-
-Verify your CSV format is standard
-
-Try with a smaller sample file
-
-Ensure file encoding is UTF-8
-
-CSV Explorer - Making data exploration simple and beautiful. 🚀
+For commercial usage, consider adding an appropriate open-source license such as MIT, Apache 2.0, or GPL.
