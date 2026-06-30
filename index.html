@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Explorer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <span class="brand-mark">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M3 6.5C3 5 4.3 4 6 4h8c1.7 0 3 1 3 2.5M3 13.5C3 15 4.3 16 6 16h8c1.7 0 3-1 3-2.5"
+                  stroke="white"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+                <circle cx="6.5" cy="6.5" r="1.1" fill="white" />
+                <circle cx="13.5" cy="13.5" r="1.1" fill="white" />
+              </svg>
+            </span>
+            <span class="brand-name">CSV Explorer</span>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-nav="dashboard">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="2" y="2" width="6" height="6" rx="1.2" />
+                <rect x="10" y="2" width="6" height="6" rx="1.2" />
+                <rect x="2" y="10" width="6" height="6" rx="1.2" />
+                <rect x="10" y="10" width="6" height="6" rx="1.2" />
+              </svg>
+              Dashboard
+            </a>
+            <label for="csvUpload" class="nav-item" data-nav="upload">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path d="M9 12V3M5 7l4-4 4 4" />
+                <path
+                  d="M3 13v1.5A1.5 1.5 0 0 0 4.5 16h9a1.5 1.5 0 0 0 1.5-1.5V13"
+                />
+              </svg>
+              Upload CSV
+            </label>
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <button id="themeToggle" class="theme-toggle" type="button">
+            <svg
+              class="icon-moon"
+              viewBox="0 0 18 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path d="M14.5 10.4A6 6 0 1 1 7.6 3.5a6.6 6.6 0 0 0 6.9 6.9Z" />
+            </svg>
+            <svg
+              class="icon-sun"
+              viewBox="0 0 18 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <circle cx="9" cy="9" r="3.2" />
+              <path
+                d="M9 1.8v1.6M9 14.6v1.6M2.6 9H4.2M13.8 9h1.6M4.2 4.2l1.1 1.1M12.7 12.7l1.1 1.1M13.8 4.2l-1.1 1.1M5.3 12.7l-1.1 1.1"
+              />
+            </svg>
+            <span id="themeLabel">Dark</span>
+            <svg
+              class="chev"
+              viewBox="0 0 18 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            ></svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ============ MAIN ============ -->
+      <div class="main-col">
+        <header class="topbar">
+          <div class="file-info">
+            <div class="file-badge">CSV</div>
+            <div class="file-meta">
+              <h1 id="fileName">No file loaded</h1>
+              <p id="fileMeta">Upload a CSV to get started</p>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <label for="csvUpload" class="btn-upload">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M8 3v10M3 8h10" />
+              </svg>
+              Upload CSV
+            </label>
+            <input type="file" id="csvUpload" accept=".csv" />
+          </div>
+        </header>
+
+        <section class="toolbar">
+          <div class="search-box">
+            <svg
+              class="search-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 18 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="8" cy="8" r="6" />
+              <path d="M12 12L16 16" />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search across all columns..."
+            />
+            <span class="shortcut">ctrl+K</span>
+          </div>
+
+          <div class="toolbar-group">
+            <div class="dd-wrap">
+              <button class="btn-tool" id="filterBtn" type="button">
+                <svg
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                >
+                  <path d="M2.5 3.5h13l-5 6v4.2l-3 1.3V9.5z" />
+                </svg>
+                Filter
+                <span class="count-badge hidden" id="filterCount">0</span>
+              </button>
+              <div class="dd-panel" id="filterPanel"></div>
+            </div>
+
+            <div class="dd-wrap">
+              <button class="btn-tool" id="sortBtn" type="button">
+                <svg
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                >
+                  <path
+                    d="M4 4v9M4 13l-2.2-2.2M4 13l2.2-2.2M14 14V5M14 5l-2.2 2.2M14 5l2.2 2.2"
+                  />
+                </svg>
+                Sort
+                <span class="sort-label" id="sortLabel"></span>
+              </button>
+              <div class="dd-panel" id="sortPanel"></div>
+            </div>
+
+            <div class="dd-wrap">
+              <button class="btn-tool" id="columnsBtn" type="button">
+                <svg
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                >
+                  <rect x="2" y="2.5" width="4" height="13" rx="1" />
+                  <rect x="7" y="2.5" width="4" height="13" rx="1" />
+                  <rect x="12" y="2.5" width="4" height="13" rx="1" />
+                </svg>
+                Columns
+                <span class="count-badge" id="columnsCount">0</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="view-switch" id="viewSwitch">
+            <button class="view-btn active" data-view="list" type="button">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path d="M3 5h12M3 9h12M3 13h12" />
+              </svg>
+              List
+            </button>
+            <button class="view-btn" data-view="cards" type="button">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="2" y="2" width="6" height="6" rx="1" />
+                <rect x="10" y="2" width="6" height="6" rx="1" />
+                <rect x="2" y="10" width="6" height="6" rx="1" />
+                <rect x="10" y="10" width="6" height="6" rx="1" />
+              </svg>
+              Cards
+            </button>
+            <button class="view-btn" data-view="table" type="button">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="2" y="2.5" width="14" height="13" rx="1.2" />
+                <path d="M2 7h14M7 2.5V15.5" />
+              </svg>
+              Table
+            </button>
+            <button class="view-btn" data-view="overview" type="button">
+              <svg
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <circle cx="9" cy="9" r="6.5" />
+                <path
+                  d="M9 9V3.2A6.3 6.3 0 0 1 14.8 9Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+              Overview
+            </button>
+          </div>
+        </section>
+
+        <div class="active-filters hidden" id="activeFiltersBar">
+          <div class="pills" id="activePills"></div>
+          <button class="btn-clear-all" id="clearFiltersBtn">Clear all</button>
+        </div>
+
+        <main class="content-area">
+          <div id="resultsGrid" class="grid view-list"></div>
+          <div id="overviewPanel" class="overview-panel hidden"></div>
+          <div id="emptyState" class="empty-state hidden">
+            <div class="empty-icon">🔍</div>
+            <h3>No tools found</h3>
+            <p>Try adjusting your search or filters</p>
+            <button id="resetEmptyBtn" class="btn-ghost">Reset filters</button>
+          </div>
+          <div id="importState" class="empty-state">
+            <div class="empty-icon">📂</div>
+            <h3>Import your CSV</h3>
+            <p>
+              Upload a CSV file to explore its rows, filter, sort and browse
+              columns
+            </p>
+            <label
+              for="csvUpload"
+              class="btn-upload"
+              style="display: inline-flex; margin-top: 10px; cursor: pointer"
+              >Choose CSV</label
+            >
+          </div>
+        </main>
+
+        <footer class="pagination-bar hidden" id="paginationBar">
+          <span class="pg-summary" id="pgSummary"></span>
+          <div class="pg-controls" id="pgControls"></div>
+        </footer>
+      </div>
+
+      <!-- ============ RIGHT PANEL ============ -->
+      <aside class="right-panel" id="rightPanel">
+        <section class="panel-block">
+          <div class="panel-head">
+            <h3>
+              Columns <span class="count-badge" id="panelColumnsCount">0</span>
+            </h3>
+          </div>
+          <div class="col-search">
+            <input
+              type="text"
+              id="columnSearch"
+              placeholder="Search columns..."
+            />
+          </div>
+          <div class="column-list" id="columnList"></div>
+          <button class="btn-reset" id="resetColumnsBtn" type="button">
+            Reset to default
+          </button>
+        </section>
+
+        <section class="panel-block">
+          <h3>Summary</h3>
+          <div class="summary-list" id="summaryList"></div>
+        </section>
+
+        <section class="panel-block">
+          <h3>Detected Types</h3>
+          <div class="types-wrap" id="typesWrap"></div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
